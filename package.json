@@ -5,7 +5,12 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "start": "node dist/server.js",
-    "build": "tsc"
+    "build": "tsc",
+    "migration:generate": "typeorm-ts-node-commonjs migration:generate -d src/config/database.ts",
+    "migration:create": "typeorm-ts-node-commonjs migration:create",
+    "migration:run": "typeorm-ts-node-commonjs migration:run -d src/config/database.ts",
+    "migration:revert": "typeorm-ts-node-commonjs migration:revert -d src/config/database.ts",
+    "migration:show": "typeorm-ts-node-commonjs migration:show -d src/config/database.ts"
   },
   "dependencies": {
     "@types/cors": "^2.8.13",
