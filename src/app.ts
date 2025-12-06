@@ -12,7 +12,10 @@ const app: Express = express();
 
 // Security Middleware
 app.use(helmet()); // Set security HTTP headers
-app.use(cors()); // Enable CORS
+app.use(cors({
+  origin: ['https://urni-database.netlify.app', 'http://localhost:3000', 'http://localhost:5173'],
+  credentials: true
+})); // Enable CORS
 app.use(express.json({ limit: '10kb' })); // Body parser, reading data from body into req.body
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(hpp()); // Prevent parameter pollution
